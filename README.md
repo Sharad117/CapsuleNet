@@ -17,3 +17,45 @@ Do add the best_accuracy.ckpt from [here](https://drive.google.com/file/d/191zDI
 Fig share [paper](https://figshare.com/articles/preprint/CapsuleNet_A_Deep_Learning_Model_To_Classify_GI_Diseases_Using_EfficientNet-b7/27297267?file=49974297)
 
 arXiv [paper](http://arxiv.org/abs/2410.19151)
+# Model
+Our proposed model uses an EfficientNet B7 model from project MONAI as the backbone, followed by two hidden linear layers using PReLU activations. The output is a linear layer with softmax activation with 10 nodes.
+
+<p align="center">
+  <img src="metrics/capsulenet.png" alt="Proposed Efficientnet model" width="300"/>
+</p>
+
+# Training
+Training and validation was done on the training and validation set provided by MISAHUB [here](https://doi.org/10.6084/m9.figshare.26403469.v1) The train set was extremely imbalanced, with over 28000 images for the largest class, while the smalles class (Worms) had just over 250 images. To address this issue we attempted using augmentation of the classes with lesser number of instances, and randomly sampled images from larger classes. We also attempted using Focal loss, and class weigts to address the imbalance issue, with poor results. The final model was trained with different augmentations for different classes.
+- Erosion and Normal classes had 5000 images each (erosion was augmented, while Normal images were randomly sampled)
+- Angioectasia and Polyp with 4000 images each (after augmentation)
+- Worms with 1264 images (after augmentation)
+- remaining classes had 3000 images each.
+
+The loss and accuracy metrics on the training set were as follows: 
+<p align="center">
+  <figure style="display:inline-block; margin: 10px;">
+    <img src="metrics/train_accuracy.jpg" alt="Image 1" width="45%"/>
+    <figcaption style="text-align: center;">Train accuracy vs train steps
+    </figcaption>
+  </figure>
+  <figure style="display:inline-block; margin: 10px;">
+    <img src="metrics/train_loss_epoch.jpg" alt="Image 2" width="45%"/>
+    <figcaption style="text-align: center;">Train loss vs train step</figcaption>
+  </figure>
+</p>
+
+
+The loss and accuracy metrics on the validation set were as follows:
+<p align="center">
+  <figure style="display:inline-block; margin: 10px;">
+    <img src="metrics/val_accuracy.jpg" alt="Image 1" width="45%"/>
+    <figcaption style="text-align: center;">Validation accuracy vs Validation steps
+    </figcaption>
+  </figure>
+  <figure style="display:inline-block; margin: 10px;">
+    <img src="metrics/val_loss_epoch.jpg" alt="Image 2" width="45%"/>
+    <figcaption style="text-align: center;">Validation loss vs Validation step</figcaption>
+  </figure>
+</p>
+
+
