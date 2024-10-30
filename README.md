@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 This is our submission to the Vision Capsule Endoscopy Challenge 2024 hosted by MISAHUB. Capsule Endoscopy is a wireless endoscopy that results in 70,000 to 100,000 image frames. The doctore is then required to examine each frame to determine the ailment that the patient is suffering. This task is therefore extremely monotonous, time-consuming and prone to human-errors. The VCE challenges to solve this problem by having the participants train a Deep Learning model that is able to determine the frames that are of interest to the doctor and also classify the frame as having one of the multiple types of diseases possible in the GI tract. There are total 10 classes of diseases covered in this challenge:
 - Angioectasia
 - Bleeding
