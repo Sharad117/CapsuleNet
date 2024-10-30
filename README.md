@@ -10,6 +10,7 @@ This is our submission to the Vision Capsule Endoscopy Challenge 2024 hosted by 
 - Polyp
 - Ulcer
 - Worms
+
 For our solution, we attempted to train a CNN based model that is able to classify the frames into one of the 10 classes. Please check out our model weights and the corresponding paper below.
 
 Do add the best_accuracy.ckpt from [here](https://drive.google.com/file/d/191zDIFdaZkmYwJUGG0N5AGj0-MRDjopF/view?usp=sharing)
